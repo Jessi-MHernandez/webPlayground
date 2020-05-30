@@ -133,3 +133,12 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'pages:pages'
 LOGOUT_REDIRECT_URL = 'home'
 
+#EMAIL - RECUPERACION DE CONTRASEÑA
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+else:
+    #AQUI SE TENDRA QUE CONFIGURAR UN EMAIL REAL PARA MODO PRODUCCION
+    pass
+
