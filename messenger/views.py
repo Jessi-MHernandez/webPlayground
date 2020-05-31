@@ -34,7 +34,7 @@ def add_message(request, pk):
             if len(thread.messages.all()) is 1:
                 json_response['first'] = True
     else:
-        raise Http404("Usuario no esta logueado")
+        raise Http404("User is not authenticated")
 
     return JsonResponse(json_response)
 

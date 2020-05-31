@@ -32,7 +32,7 @@
                       <!-- Mostramos la información del miembro --> 
                       <div>
                         <a href="{% url 'messenger:detail' thread.pk %}">{{user}}</a><br>
-                        <small><i>Hace {{thread.messages.last.created|timesince}}</i></small>
+                        <small><i>Hace {{ message.created | timesince }}</i></small>
                       </div>
                     {% endif %}
                   {% endfor %}
@@ -59,53 +59,55 @@
               {% endfor %}
             </div>
             <!-- Aquí crearemos el formulario -->
-            <textarea id="content" class="form-control" rows="2" placeholder="Escribe tu mensaje aquí"></textarea>
-            <button id="send" class="btn btn-success btn-sm btn-block">Enviar mensaje</button>
+              <textarea id="content" class="form-control mb-2" rows="2" placeholder="Escribe tu mensaje aquí"></textarea>
+            <button id="send" class="btn btn-primary btn-sm btn-block" disabled>Enviar mensaje</button>
             <script>
               var send = document.getElementById("send");
               send.addEventListener("click", function(){
-                var content = encodeURIComponent(document.getElementById("content").value);
-                if(content.length > 0){
-                  document.getElementById("content").value ='';
+                var content = encodeURIComponent(document.getElementById("content").value); // &
+                if (content.length > 0){
+                  document.getElementById("content").value = '';
                   send.disabled = true;
                   const url = "{% url 'messenger:add' thread.pk %}" + "?content="+content;
-                  fecth(url, {'credentials':'include'}).then(response => response.json()).then (function(data){
-                   // alert(data.created);
-                  var message = document.getElementById('div');
-                  message.classList.add()'mine', 'mb-3');
-                  message.innerHTML = '<small><i>Hace unos segundos</i></small><br>'+decodeURIComponent(content);
-                  document.getElementById("thread").appendChild(message);
-                  ScrollBottomInThread();
-
-                  //SI ES EL PRIMER MENSAJE APARECERÁ A LA IZQUIERDA
-                  if (data.first){
-                    window.location.href = "{% url 'messenger:detail' thread.pk %}";
-                  }
-                 })
+                  fetch(url, {'credentials':'include'}).then(response => response.json()).then(function(data){
+                    // Si el mensaje se ha creado correctamente...
+                    if (data.created) {
+                      // Si es el primer mensaje del hilo actualizaremos para que aparezca a la izquierda
+                      if (data.first) {
+                        window.location.href = "{% url 'messenger:detail' thread.pk %}";
+                      }
+                      // Si no hay redirección creamos una nueva capa dinámicamente con el mensaje
+                      var message = document.createElement('div');
+                      message.classList.add('mine', 'mb-3');
+                      message.innerHTML = '<small><i>Hace unos segundos</i></small><br>'+decodeURIComponent(content);
+                      document.getElementById("thread").appendChild(message);   // Lo añadimos a la div thread
+                      ScrollBottomInThread();  // Movemos el scrol abajo del todo
+                    } else {
+                      // Si algo ha ido mal podemos debugear en la consola del inspector
+                      console.log("Algo ha fallado y el mensaje no se ha podido añadir.")
+                    }
+                  })
                 }
               })
 
-              //EVENTO QUE ACTIVA O DESACTIVA EL BOTON DEPENDIENDO DE SI HAY O NO MENSAJE
+              // Evento que activa o desactiva el botón dependiendo de si hay o no mensaje
               var content = document.getElementById("content");
               content.addEventListener("keyup", function(){
                 if (!this.checkValidity() || !this.value){
                   send.disabled = true;
-                }else{
+                } else {
                   send.disabled = false;
                 }
-                }
               })
-
-
-              //FORZAR EL SCROLL ABAJO DEL TODO
+              
+              // Forzar el Scroll abajo del todo
               function ScrollBottomInThread(){
                 var thread = document.getElementById("thread");
                 thread.scrollTop = thread.scrollHeight;
-              
               }
+
               ScrollBottomInThread();
             </script>
-
           </div>
         </div>
     </div>
