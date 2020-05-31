@@ -59,6 +59,53 @@
               {% endfor %}
             </div>
             <!-- Aquí crearemos el formulario -->
+            <textarea id="content" class="form-control" rows="2" placeholder="Escribe tu mensaje aquí"></textarea>
+            <button id="send" class="btn btn-success btn-sm btn-block">Enviar mensaje</button>
+            <script>
+              var send = document.getElementById("send");
+              send.addEventListener("click", function(){
+                var content = encodeURIComponent(document.getElementById("content").value);
+                if(content.length > 0){
+                  document.getElementById("content").value ='';
+                  send.disabled = true;
+                  const url = "{% url 'messenger:add' thread.pk %}" + "?content="+content;
+                  fecth(url, {'credentials':'include'}).then(response => response.json()).then (function(data){
+                   // alert(data.created);
+                  var message = document.getElementById('div');
+                  message.classList.add()'mine', 'mb-3');
+                  message.innerHTML = '<small><i>Hace unos segundos</i></small><br>'+decodeURIComponent(content);
+                  document.getElementById("thread").appendChild(message);
+                  ScrollBottomInThread();
+
+                  //SI ES EL PRIMER MENSAJE APARECERÁ A LA IZQUIERDA
+                  if (data.first){
+                    window.location.href = "{% url 'messenger:detail' thread.pk %}";
+                  }
+                 })
+                }
+              })
+
+              //EVENTO QUE ACTIVA O DESACTIVA EL BOTON DEPENDIENDO DE SI HAY O NO MENSAJE
+              var content = document.getElementById("content");
+              content.addEventListener("keyup", function(){
+                if (!this.checkValidity() || !this.value){
+                  send.disabled = true;
+                }else{
+                  send.disabled = false;
+                }
+                }
+              })
+
+
+              //FORZAR EL SCROLL ABAJO DEL TODO
+              function ScrollBottomInThread(){
+                var thread = document.getElementById("thread");
+                thread.scrollTop = thread.scrollHeight;
+              
+              }
+              ScrollBottomInThread();
+            </script>
+
           </div>
         </div>
     </div>
