@@ -52,4 +52,4 @@ class ThreadTestCase(TestCase):
         thread = Thread.objects.find_or_create(self.user1,self.user2)
         self.assertEqual(self.thread, thread)    
         thread = Thread.objects.find_or_create(self.user1,self.user3)
-        self.assertIsNotNone(thread)       
+        self.assertIsNotNone(thread)    

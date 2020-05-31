@@ -1,0 +1,77 @@
+[33mcommit f9f28ca7bd931e39afbdd96b139b7fbde1792e7b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 18:17:26 2020 -0500
+
+    Realizando pruebas unitarias y optimizando el almacenamiento del avatar
+
+[33mcommit ef9a306354f82275203f1d2833e0c42f676b3e8a[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 17:57:17 2020 -0500
+
+    Introducción a las señales
+
+[33mcommit 959fb552910ff7454d2194ed930d3134d3230e95[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 17:26:19 2020 -0500
+
+    Mejorando el formulario de perfil y agregando la opcion de editar contraseña
+
+[33mcommit 6d0418fd6d746a7bbe605f9250c46590607a0c5e[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 16:51:00 2020 -0500
+
+    Creando un perfil de usuario (prueba) y haciendolo editable
+
+[33mcommit 991d9c5c6eac400a224217465796277ec012f9f1[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 16:20:15 2020 -0500
+
+    Validando un email unico y restableciendo la contraseña
+
+[33mcommit 4d74c6f1aaf7e4395b5ce21fdaf8e7f3a63f7d44[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 16:04:02 2020 -0500
+
+    Agregando el email en el formulario de registro y validando al registrarse
+
+[33mcommit ece91b819bafddf7598a9c5ec2a11dbb6cc68b93[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 15:34:21 2020 -0500
+
+    Creando octava App(Registration), configurando el login y el logout. Además de registrar con CBV parte-1
+
+[33mcommit c5badb5cb61179e893ebbeeaf62f619c97b3065f[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 14:44:43 2020 -0500
+
+    creando un mixin de identificación y reemplazandolo por decoradores de identificacioin
+
+[33mcommit a77d46bc241685c4ebd13adf650860dca7720f08[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 14:16:05 2020 -0500
+
+    Dandole diseño a los formularios y creando vista delete
+
+[33mcommit 848fa36f99aa5f5817279256da06459435febc81[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 13:35:54 2020 -0500
+
+    Creando el crud, comenzando con el create y update
+
+[33mcommit 64d42930e6102c50d94c3339c654b22bb22dee5b[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 12:02:14 2020 -0500
+
+    Utilizando el listview y detailview en la app de pages
+
+[33mcommit 24a905d06c1b67cb3fbfbcf66229b89ffac01c32[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 11:47:44 2020 -0500
+
+    Preparando la app pages y agragando paginas de prueba desde el administrador, uilizando la base de datos mysql
+
+[33mcommit 27536a583776756bf57d4c14a4a7d7a082ef3094[m
+Author: Jessica M. Hernandez <jessii.hdez.20@gmail.com>
+Date:   Sat May 30 11:12:14 2020 -0500
+
+    Iniciando proyecto y preparando la app Core
